@@ -1,13 +1,27 @@
 import React from "react";
 
-function CurrencyRow() {
+function CurrencyRow(props) {
+  const {
+    currencyOptions,
+    selectedCurrency,
+    onChangeCurrency,
+    amount,
+    onChangeAmount,
+  } = props;
   return (
     <div>
-      <input type={"number"} className="input" />
-      <select>
-        <option value={"Hi"} className="value">
-          Hi
-        </option>
+      <input
+        type={"number"}
+        className="input"
+        value={amount}
+        onChange={onChangeAmount}
+      />
+      <select value={selectedCurrency} onChange={onChangeCurrency}>
+        {currencyOptions.map((option) => (
+          <option key={option} value={option} className="value">
+            {option}
+          </option>
+        ))}
       </select>
     </div>
   );
